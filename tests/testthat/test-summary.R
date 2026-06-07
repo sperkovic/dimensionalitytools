@@ -44,7 +44,7 @@ test_that("print method runs without error and returns invisibly", {
 
 test_that("summary returns leaning and cutoffs invisibly", {
   res <- bifactor_indices(Lambda_ref)
-  out <- summary(res)
+  out <- suppressWarnings(summary(res))
   expect_true("leaning" %in% names(out))
   expect_true("cutoffs" %in% names(out))
   expect_equal(out$cutoffs$ecv, 0.70)
@@ -63,7 +63,7 @@ test_that("summary respects custom cutoffs", {
 
 test_that("summary lean is toward for reference Lambda at default cutoffs", {
   res <- bifactor_indices(Lambda_ref)
-  out <- summary(res)
+  out <- suppressWarnings(summary(res))
   expect_match(out$leaning, "toward")
 })
 
@@ -79,8 +79,8 @@ test_that("summary names subscale tensions when omega_s is substantial", {
   # construct a Lambda with a strong specific factor
   Lambda_strong <- Lambda_ref
   Lambda_strong[5:8, 2] <- c(.70, .65, .68, .72)  # strengthen SF2 region
-  res <- bifactor_indices(Lambda_strong)
-  out <- summary(res)
+  res <- suppressWarnings(bifactor_indices(Lambda_strong))
+  out <- suppressWarnings(summary(res))
   # at minimum should run and produce a character leaning
   expect_type(out$leaning, "character")
 })
