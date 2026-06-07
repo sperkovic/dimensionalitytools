@@ -43,7 +43,7 @@ test_that("ECV_subscale uses subscale items only", {
   items_sf1 <- 1:4
   num  <- sum(Lambda_ref[items_sf1, "SF1"]^2)
   denom <- sum(Lambda_ref[items_sf1, "G"]^2) + sum(Lambda_ref[items_sf1, "SF1"]^2)
-  expect_equal(ecv$ECV_subscale["SF1"], num / denom, tolerance = 1e-6)
+  expect_equal(unname(ecv$ECV_subscale["SF1"]), num / denom, tolerance = 1e-6)
 })
 
 
@@ -119,7 +119,7 @@ test_that("FD matches Dueber formula", {
   Sigma <- Lambda_ref %*% Phi %*% t(Lambda_ref) + diag(Psi)
   expected <- sqrt(diag(Phi %*% t(Lambda_ref) %*% solve(Sigma) %*% Lambda_ref %*% Phi))
   fd <- compute_fd(Lambda_ref)
-  expect_equal(fd, expected, tolerance = 1e-8)
+  expect_equal(unname(fd), unname(expected), tolerance = 1e-8)
 })
 
 
