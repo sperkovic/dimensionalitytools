@@ -129,10 +129,10 @@ summary.bifactor_indices <- function(object,
   strong_sub <- names(omegas)[!is.na(omegas) & omegas >= omegas_cut]
   cat("Specific factor reliable variance (omega_s)\n")
   for (nm in names(omegas)) {
-    flag <- if (!is.na(omegas[nm]) && omegas[nm] >= omegas_cut) "  <- substantial" else ""
+    flag <- if (!is.na(omegas[nm]) && omegas[nm] >= omegas_cut) " *" else ""
     cat(sprintf("  %-8s %7s%s\n", nm, rnd(omegas[nm]), flag))
   }
-  cat(sprintf("  (omega_s > %s suggests reliable variance beyond the general factor; Rodriguez et al., 2016)\n\n",
+  cat(sprintf("  (* omega_s >= %s; suggests reliable specific variance beyond the general factor.\n     Rodriguez et al., 2016. Note: * is a threshold flag, not a significance test or p-value.)\n\n",
               omegas_cut))
 
   ############
