@@ -1,0 +1,21 @@
+Package: dimensionalitytools
+Type: Package
+Title: Efficient Bifactor Model Indices for Simulation and Applied Use
+Version: 0.1.0
+Authors@R: person("First", "Last", email = "email@example.com", role = c("aut", "cre"))
+Description: Computes bifactor model indices including ECV, PUC, omega hierarchical,
+    omega subscale, omega total, H (construct replicability), factor determinacy (FD),
+    Cronbach's alpha, and ARPB. Accepts fitted lavaan or mirt objects, or a raw
+    standardized loading matrix. Designed for efficiency in simulation contexts while
+    remaining accessible for single-dataset applied use. All indices are computed from
+    an extracted loading matrix without refitting models.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Imports:
+    lavaan,
+    mirt,
+    methods
+Suggests:
+    testthat (>= 3.0.0)
+RoxygenNote: 7.3.1

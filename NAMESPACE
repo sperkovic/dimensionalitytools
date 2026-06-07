@@ -1,0 +1,6 @@
+exportPattern("^[^\\.]")
+S3method(print, bifactor_indices)
+S3method(summary, bifactor_indices)
+importFrom(lavaan, lavInspect)
+importFrom(mirt, coef)
+importFrom(methods, is)
